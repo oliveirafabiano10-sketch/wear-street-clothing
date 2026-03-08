@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wear Street Clothing - Camisetas Personalizadas</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --black: #000000;
+            --white: #ffffff;
+            --gray-light: #f5f5f5;
+            --gray-dark: #1a1a1a;
+            --accent-gray: #e0e0e0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--black);
+            color: var(--white);
+            overflow-x: hidden;
+        }
+
+        /* ===== HEADER ===== */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.95);
+            border-bottom: 2px solid var(--white);
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            animation: slideDown 0.6s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav a {
+            text-decoration: none;
+            color: var(--white);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            transition: all 0.3s ease;
+            border-bottom: 2px solid transparent;
+            padding-bottom: 0.25rem;
+        }
+
+        .nav a:hover {
+            border-bottom-color: var(--white);
+            transform: translateY(-2px);
+        }
+
+        .cart-icon {
+            width: 24px;
+            height: 24px;
+            border: 2px solid var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+
+        .cart-icon:hover {
+            background-color: var(--white);
+            color: var(--black);
+            transform: scale(1.1);
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            margin-top: 80px;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--black) 0%, var(--gray-dark) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background-color: var(--white);
+            border-radius: 50%;
+            top: -200px;
+            right: -200px;
+            opacity: 0.05;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(30px);
+            }
+        }
+
+        .hero-content {
+            text-align: center;
+            position: relative;
+            z-index: 2;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-logo {
+            width: 400px;
+            height: auto;
+            margin-bottom: 2rem;
+            filter: drop-shadow(0 10px 30px rgba(255, 255, 255, 0.2));
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            letter-spacing: 0.02em;
+            line-height: 1.2;
+            animation: scaleIn 0.8s ease-out 0.2s both;
+        }
+
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: var(--accent-gray);
+            letter-spacing: 0.05em;
+            animation: fadeIn 0.8s ease-out 0.4s both;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .hero .cta-button {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background-color: var(--white);
+            color: var(--black);
+            text-decoration: none;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-size: 0.9rem;
+            border: 2px solid var(--white);
+            cursor: pointer;
+            transition: all 0.4s ease;
+            animation: fadeIn 0.8s ease-out 0.6s both;
+        }
+
+        .hero .cta-button:hover {
+            background-color: var(--black);
+            color: var(--white);
+            transform: scale(1.05);
+            box-shadow: 0 20px 50px rgba(255, 255, 255, 0.3);
+        }
+
+        /* ===== PRODUTOS ===== */
+        .products {
+            padding: 6rem 2rem;
+            background-color: var(--black);
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 4rem;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            letter-spacing: 0.03em;
+            position: relative;
+            animation: titleSlide 0.8s ease-out;
+        }
+
+        @keyframes titleSlide {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background-color: var(--white);
+            margin: 1rem auto 0;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .product-card {
+            background-color: var(--gray-dark);
+            border: 1px solid var(--accent-gray);
+            padding: 1.5rem;
+            transition: all 0.4s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            animation: cardAppear 0.6s ease-out;
+        }
+
+        @keyframes cardAppear {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .product-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.05);
+            transition: left 0.4s ease;
+            z-index: 1;
+        }
+
+        .product-card:hover {
+            border-color: var(--white);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(255, 255, 255, 0.15);
+        }
+
+        .product-card:hover::before {
+            left: 100%;
+        }
+
+        .product-image {
+            width: 100%;
+            height: 300px;
+            background: linear-gradient(135deg, var(--gray-dark) 0%, #2a2a2a 100%);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid var(--accent-gray);
+            position: relative;
+            z-index: 2;
+            font-weight: 700;
+            color: var(--accent-gray);
+        }
+
+        .product-name {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            position: relative;
+            z-index: 2;
+            letter-spacing: 0.03em;
+        }
+
+        .product-desc {
+            font-size: 0.85rem;
+            color: var(--accent-gray);
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .product-price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 2;
+            letter-spacing: 0.02em;
+        }
+
+        .add-to-cart {
+            width: 100%;
+            padding: 0.8rem;
+            background-color: var(--white);
+            color: var(--black);
+            border: none;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 2;
+            font-size: 0.85rem;
+        }
+
+        .add-to-cart:hover {
+            background-color: var(--black);
+            color: var(--white);
+            border: 1px solid var(--white);
+            transform: scale(1.02);
+        }
+
+        /* ===== PERSONALIZAÇÃO ===== */
+        .customization {
+            padding: 6rem 2rem;
+            background-color: var(--gray-dark);
+            border-top: 2px solid var(--white);
+            border-bottom: 2px solid var(--white);
+        }
+
+        .customization-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .customization-text h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+        }
+
+        .customization-text p {
+            font-size: 1rem;
+            color: var(--accent-gray);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .feature-list {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .feature-list li {
+            padding: 0.8rem 0;
+            padding-left: 2rem;
+            position: relative;
+            color: var(--accent-gray);
+        }
+
+        .feature-list li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: var(--white);
+            font-weight: 700;
+        }
+
+        .customization-image {
+            background: linear-gradient(135deg, var(--black) 0%, #2a2a2a 100%);
+            padding: 3rem;
+            border: 1px solid var(--accent-gray);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 400px;
+            font-weight: 700;
+            color: var(--accent-gray);
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background-color: var(--black);
+            border-top: 2px solid var(--white);
+            padding: 3rem 2rem;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-section h3 {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 1.5rem;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-section ul li a {
+            color: var(--accent-gray);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section ul li a:hover {
+            color: var(--white);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid var(--accent-gray);
+            padding-top: 2rem;
+            text-align: center;
+            color: var(--accent-gray);
+            font-size: 0.85rem;
+        }
+
+        /* ===== RESPONSIVO ===== */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero-logo {
+                width: 250px;
+            }
+
+            .nav {
+                gap: 1rem;
+            }
+
+            .nav a {
+                font-size: 0.75rem;
+            }
+
+            .customization-content {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header>
+        <img src="logo_wear_street.png" alt="Wear Street Clothing" style="height: 50px; width: auto;">
+        <nav class="nav">
+            <a href="#home">Home</a>
+            <a href="#produtos">Produtos</a>
+            <a href="#personalizacao">Personalizar</a>
+            <a href="#contato">Contato</a>
+            <div class="cart-icon" onclick="alert('Carrinho vazio')">0</div>
+        </nav>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Camisetas Personalizadas</h1>
+            <p>Expresse sua identidade através da moda de rua</p>
+            <button class="cta-button" onclick="document.getElementById('produtos').scrollIntoView()">Explore Agora</button>
+        </div>
+    </section>
+
+    <!-- PRODUTOS -->
+    <section class="products" id="produtos">
+        <h2 class="section-title">Nossas Coleções</h2>
+        <div class="products-grid">
+            <!-- Produto 1 -->
+            <div class="product-card">
+                <div class="product-image">Camiseta Classic</div>
+                <h3 class="product-name">Camiseta Classic</h3>
+                <p class="product-desc">100% Algodão, conforto superior</p>
+                <p class="product-price">R$ 79,90</p>
+                <button class="add-to-cart">Adicionar ao Carrinho</button>
+            </div>
+
+            <!-- Produto 2 -->
+            <div class="product-card">
+                <div class="product-image">Camiseta Premium</div>
+                <h3 class="product-name">Camiseta Premium</h3>
+                <p class="product-desc">Tecido premium com acabamento</p>
+                <p class="product-price">R$ 99,90</p>
+                <button class="add-to-cart">Adicionar ao Carrinho</button>
+            </div>
+
+            <!-- Produto 3 -->
+            <div class="product-card">
+                <div class="product-image">Camiseta Oversize</div>
+                <h3 class="product-name">Camiseta Oversize</h3>
+                <p class="product-desc">Corte oversized trendy</p>
+                <p class="product-price">R$ 89,90</p>
+                <button class="add-to-cart">Adicionar ao Carrinho</button>
+            </div>
+
+            <!-- Produto 4 -->
+            <div class="product-card">
+                <div class="product-image">Camiseta Mesh</div>
+                <h3 class="product-name">Camiseta Mesh</h3>
+                <p class="product-desc">Respirável e leve</p>
+                <p class="product-price">R$ 84,90</p>
+                <button class="add-to-cart">Adicionar ao Carrinho</button>
+            </div>
+
+            <!-- Produto 5 -->
+            <div class="product-card">
+                <div class="product-image">Camiseta Street</div>
+                <h3 class="product-name">Camiseta Street</h3>
+                <p class="product-desc">Estilo urbano autêntico</p>
+                <p class="product-price">R$ 94,90</p>
+                <button class="add-to-cart">Adicionar ao Carrinho</button>
+            </div>
+
+            <!-- Produto 6 -->
+            <div class="product-card">
+                <div class="product-image">Camiseta Bold</div>
+                <h3 class="product-name">Camiseta Bold</h3>
+                <p class="product-desc">Design impactante</p>
+                <p class="product-price">R$ 99,90</p>
+                <button class="add-to-cart">Adicionar ao Carrinho</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- PERSONALIZAÇÃO -->
+    <section class="customization" id="personalizacao">
+        <div class="customization-content">
+            <div class="customization-text">
+                <h2>Personalize Sua Camiseta</h2>
+                <p>
+                    Na Wear Street Clothing, você tem controle total sobre seu design. Escolha cores, adicione textos, logos e imagens para criar a camiseta dos seus sonhos.
+                </p>
+                <ul class="feature-list">
+                    <li>Escolha de 50+ cores disponíveis</li>
+                    <li>Impressão de alta qualidade</li>
+                    <li>Técnicas: DTF, Bordado e Serigrafia</li>
+                    <li>Entrega rápida em 7-10 dias</li>
+                    <li>Suporte ao cliente 24/7</li>
+                    <li>Satisfação garantida 100%</li>
+                </ul>
+                <button class="cta-button" onclick="alert('Ferramenta de customização disponível em breve!')">Comece a Personalizar</button>
+            </div>
+            <div class="customization-image">
+                Seu Design Aqui
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer id="contato">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Sobre Nós</h3>
+                <ul>
+                    <li><a href="#" onclick="event.preventDefault()">Nossa História</a></li>
+                    <li><a href="#" onclick="event.preventDefault()">Missão</a></li>
+                    <li><a href="#" onclick="event.preventDefault()">Valores</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Suporte</h3>
+                <ul>
+                    <li><a href="#" onclick="event.preventDefault()">FAQ</a></li>
+                    <li><a href="#" onclick="event.preventDefault()">Devoluções</a></li>
+                    <li><a href="#" onclick="event.preventDefault()">Contato</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Legal</h3>
+                <ul>
+                    <li><a href="#" onclick="event.preventDefault()">Termos de Uso</a></li>
+                    <li><a href="#" onclick="event.preventDefault()">Privacidade</a></li>
+                    <li><a href="#" onclick="event.preventDefault()">Cookies</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Redes Sociais</h3>
+                <ul>
+                    <li><a href="#" onclick="event.preventDefault()">Instagram</a></li>
+                    <li><a href="#" onclick="event.preventDefault()">TikTok</a></li>
+                    <li><a href="#" onclick="event.preventDefault()">YouTube</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Wear Street Clothing. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+</body>
+</html>
